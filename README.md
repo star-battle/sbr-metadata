@@ -6,6 +6,7 @@
 
 ## Patch notes
 
+* [Patch 5.0](patch/v5.0.md) - XXXX-XX-XX
 * [Patch 4.8](patch/v4.8.md) - 2024-05-25
 * [Patch 4.7](patch/v4.7.md) - 2022-02-15
 * [Patch 4.6](patch/v4.6.md) - 2022-02-06
