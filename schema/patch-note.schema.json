@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "patch-note",
+  "title": "SBR Patch Note Frontmatter",
+  "type": "object",
+  "required": ["version", "published", "status", "tags"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "MAJOR.MINOR version string"
+    },
+    "published": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 datetime in UTC when the patch was released, null if not yet released"
+    },
+    "updated": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 datetime of the most recent clarification or hotpatch update, null if none"
+    },
+    "revision": {
+      "type": ["integer", "null"],
+      "minimum": 1,
+      "description": "Optional build/revision number"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["dev", "test", "live"],
+      "description": "dev = work in progress; test = published on Battle.net test; live = released to everyone"
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["game-balance", "ui", "bugfixes", "new-content"]
+      },
+      "description": "Content categories applicable to this patch"
+    }
+  },
+  "additionalProperties": false
+}
