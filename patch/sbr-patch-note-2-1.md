@@ -1,6 +1,15 @@
-# [v2.1] - 2021-08-19
+---
+version: "2.1"
+published: "2021-08-19T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [ui, bugfixes]
+---
 
-## General:
+# Star Battle Reloaded 2.1 - Patch Notes
+
+## General
 
 - Changed *Beginner's ship* build of BC to: speed +2, range +2, missiles dmg +1.
 - Extended time to select a ship from 60s to 90s.
@@ -11,7 +20,7 @@
 - Reverted the change of font - so that text no longer looks "weird". (It'll be revisited at a later date).
 - Refurbished a little bit look of all existing panels, including ship selection.
 
-## TrustGate:
+## TrustGate
 
 - Time left until a player will be dropped due to a timeout will now be shown - if they're AFK, and you want to wait for them, simply pause the game.
 - Added tooltips to some of the fields in the table, to clarify their meaning.
@@ -32,14 +41,14 @@
 > Thanks to Nox for helping us make this system better by providing suggestions and debugging data (sc2replay).\
 > (Although further tunning may still be required)
 
-## Bugfixes:
+## Bugfixes
 
 - Fixed an issue that prevented match from being rated when there were computer players present in the game.
 - Fixed tutorial being loaded instead of `Omega-SBR` gameplay data, when it was choosen explicitly in the lobby.
 - Fixed visual indicator of BC's Scanner Sweep not being aligned with its actual effect range (`8.25`).
 - Fixed Vortex to shutdown personal cloaking field of VR, so that energy is not being drained.
 
-## Versioning:
+## Versioning
 
 Current version of the map will now be shown in the tooltip of a Mission Timer. The format will go as follows: `MAJOR.MINOR.BUILD`, i.e. `2.1.55dd004`, the first two digits will always correspond to a specific release that will never be published without patch notes.
 

@@ -1,9 +1,20 @@
-# [v4.2] - 2021-11-15
+---
+version: "4.2"
+published: "2021-11-15T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [game-balance, bugfixes]
+---
+
+# Star Battle Reloaded 4.2 - Patch Notes
 
 ## General
 
 - Introduced new lobby option to the Balanced game variant, that allows players to team up before the game starts, and basically play in duo. The concept is very simple - players that want to end up one the same team, must choose the same Squad number in the lobby.\
   ![](./assets/4.2/lobby-squad.png)
+
+## Balance
 
 ### Colossus
 

@@ -1,4 +1,13 @@
-# [v4.4] - 2022-01-21
+---
+version: "4.4"
+published: "2022-01-21T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [game-balance, ui, bugfixes]
+---
+
+# Star Battle Reloaded 4.4 - Patch Notes
 
 ## General
 

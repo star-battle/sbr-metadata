@@ -1,4 +1,13 @@
-# [v4.7] - 2022-02-15
+---
+version: "4.7"
+published: "2022-02-15T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [bugfixes]
+---
+
+# Star Battle Reloaded 4.7 - Patch Notes
 
 ## General
 

@@ -1,4 +1,13 @@
-# [v4.8] - 2024-05-25
+---
+version: "4.8"
+published: "2024-05-25T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [new-content, bugfixes]
+---
+
+# Star Battle Reloaded 4.8 - Patch Notes
 
 ## General
 

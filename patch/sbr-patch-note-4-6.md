@@ -1,4 +1,13 @@
-# [v4.6] - 2022-02-06
+---
+version: "4.6"
+published: "2022-02-06T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [game-balance, new-content, ui]
+---
+
+# Star Battle Reloaded 4.6 - Patch Notes
 
 ## General
 
@@ -6,6 +15,8 @@
 - Ship restrictions for inexperienced players will no longer be one sided - both teams must have enough experienced players on their side in order for it to activate. (Otherwise it can negatively affect autobalance).
 - UI: Life, shield and energy regen ratios shown in tooltips will now also include any modifications from buffs/debuffs. (Previously they'd only indicate innate values granted from upgrades).
 - **[Experimental]** Capital ships will take twice as long to decelerate while releasing OBF.
+
+## Balance
 
 ### Battlecruiser
 

@@ -1,9 +1,20 @@
-# [v4.3] - 2021-12-25
+---
+version: "4.3"
+published: "2021-12-25T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [new-content, game-balance, ui, bugfixes]
+---
+
+# Star Battle Reloaded 4.3 - Patch Notes
 
 ## General
 
 This is preliminary patch that brings in a new ship - Queen (a zerg support). Yet, the ship is still a WIP. While its set of abilities is complete, merely half of the abilities is where we want them to be. Other half needs more work.\
 As such the ship is locked to Sandbox mode, and shouldn't be judged until it reaches its final form.
+
+## Balance
 
 ### Dreadnought
 

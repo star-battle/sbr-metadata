@@ -1,6 +1,15 @@
-## [1.1] - 2021-08-04
+---
+version: "1.1"
+published: "2021-08-04T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [game-balance, bugfixes]
+---
 
-### General:
+# Star Battle Reloaded 1.1 - Patch Notes
+
+## General
 
 - Updated loading screen artwork to a final version (*probably*). Thanks to AmigoDeer!
 - *Slightly* increased scale of Vikings and Phoenixes.
@@ -8,7 +17,9 @@
 
 > **Developer comment:** Viking bug is finally no more. Yet we retained one good thing about it. Increased sized allowed for guardian to stack acid more easily on creep, aswell as allows ships (mostly supports) being swarmed by Onboard-fighters to actually target fire some creep.
 
-### Arbiter:
+## Balance
+
+### Arbiter
 
 - Force Field: duration reduced from 5s to 4s.
 
@@ -18,7 +29,7 @@
 > 
 > We're slightly reducing their duration so that they are less effective during retreats, but their use shouldn't be affected during pushes. We also know that it nerfs arbiter in a second way, forcing it to put more focus and APM into using this ability, so while we're being cautious with this ability, this might also increase skillcap and make great arbiters stand out from good arbiters.
 
-### Guardian:
+### Guardian
 
 - Broodlings:
   - Bonus damage to claws increased from 2.2 to 2.5 per each level of Broodlings upgrade. (It was already buffed in previous patch, but we haven't nailed the value at the time).
@@ -33,7 +44,7 @@
 > So we're giving some possibility of counterplay by increasing their size and allowing players to target fire them more easily.
 
 
-### Bugfixes:
+## Bugfixes
 
 - Fixed Frigate starting with 8.0 range, instead of 7.5 range as it was previously.
 - Fixed Arbiter being unable to turn off the cloaking field, while having Phantom of itself (or another Arbiter) in its selection.

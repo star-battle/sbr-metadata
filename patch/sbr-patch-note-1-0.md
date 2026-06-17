@@ -1,8 +1,17 @@
-## [1.0] - 2021-08-01
+---
+version: "1.0"
+published: "2021-08-01T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [game-balance, bugfixes]
+---
+
+# Star Battle Reloaded 1.0 - Patch Notes
 
 > **Developer comment:** This patch aims at fixing major known bugs, aswell as adjusting potency of ships and builds that should dominate in specific domains.
 
-### General
+## General
 
 - Fixed a visual issue affecting Viking animations.
 - Fixed minor hotkey conflicts on Colossus and Gaurdian.
@@ -11,6 +20,8 @@
 - Changed default game variant to "Balanced", which is essentially what was previously known as FFA. The difference is only on the lobby side, where list of players is now more compact - everyone is grouped under Team 1. (This also fixes annoying issue, where chat would default to `all` instead of `allies` in FFA setup).
 - Restored some advanced lobby attributes to the "Custom" game variant, such as ability to choose map (loading custom map from bank file might now work again, but hasn't been tested).
 - It's now possible to access upgrade & installation command cards while not at base.
+
+## Balance
 
 ### Battlecruiser
 

@@ -1,9 +1,18 @@
-# [v2.2] - 2021-08-22
+---
+version: "2.2"
+published: "2021-08-22T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [bugfixes]
+---
+
+# Star Battle Reloaded 2.2 - Patch Notes
 
 > This patch *should* be stable, and goes to both NA and EU - so they're back in sync.
 > However the strategy of updating just one region (preferably NA - less popular, and with higher tolerance for changes), before the other might be used again in the future, where there is an update that has potential of breaking stuff. So *ideally* EU region will only receive tested updates.
 
-## TrustGate:
+## TrustGate
 
 - A lot of improvements on the UI side of things:
   - There are multiple steps of verification a player needs to complete - the progression will now be shown for each player individually. To make it clear whether someone is just completely alt-tabbed, or is just slow to complete the verification.\
@@ -20,7 +29,7 @@
 
 > At this point, TrustGate is considered to be feature complete. And hopefully bug free.
 
-## Bugfixes:
+## Bugfixes
 
 - Fixed `Elite Colors` of Arbiter and Carrier model not being reflected appropriately by a Phantom.
 - Fixed `Waiting for players` dialog window - where it wouldn't appear in an event of connection issues. (Bug introduced in v2.0).

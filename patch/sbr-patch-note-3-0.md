@@ -1,10 +1,21 @@
-# [v3.0] - 2021-10-03
+---
+version: "3.0"
+published: "2021-10-03T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [new-content, game-balance, bugfixes]
+---
+
+# Star Battle Reloaded 3.0 - Patch Notes
 
 ## General
 
 - Introduced Sandbox mode - [learn more](#sandbox-mode).
 - Capital ships and AI fighters will now be outlined when "hidden" behind a base building (Command Center / Mothership).
 - Sound alerts will use custom announcer depending on the selected ship's race, it will be either Tychus, [Alarak](https://youtu.be/KfOJ60tbFFs?t=34) or [Abathur](https://www.youtube.com/watch?v=iWQ-KksWzRI&t=18s). Currently used for: ship upgrades etc. ; additionally base upgrades notifications, nuke/torpedo notifications, victory/loss.
+
+## Balance
 
 ### Battlecruiser
 
@@ -60,7 +71,7 @@
 
 - Interception can no longer be used on `Light` units.
 
-### Bugfixes
+## Bugfixes
 
 - Restored missing Infinite Barrage upgrade to Carrier's Plasma Channel
 

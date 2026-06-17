@@ -1,10 +1,19 @@
-# [v2.0] - 2021-08-15
+---
+version: "2.0"
+published: "2021-08-15T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [new-content, ui, bugfixes]
+---
+
+# Star Battle Reloaded 2.0 - Patch Notes
 
 This update focuses on improving adoption of the game on NA region. It doesn't feature any balance changes.
 
 > **Notice:** Due to possibility of bugs this version hasn't been published on EU region yet - it's currently only available on NA. It'll be deployed on EU in a follow up release, likely the next one - 2.1.
 
-## General:
+## General
 
 - Extended lobby to 15 players slots - as an extra tool for hosts to mitigate smurf/trolling issue. 
 - Introduced option allowing to load different Gameplay Data from the same map - [learn more](#1-gameplay-data-variants).
@@ -17,12 +26,12 @@ This update focuses on improving adoption of the game on NA region. It doesn't f
   - (.. and some other minor things that aren't worth mentioning).
 - Ported tournaments rewards from latest Omega version, which should reflect all past community tournaments.
 
-## UI:
+## UI
 
 - This patch sets a first step towards revamping various UI panels - such as ship selection, console panel, score boards etc. In this iteration we've avoided changing positions of UI elements, and only improved clarity by changing fonts and color palette.
 - Removed useless elements such as army hotkey and hero panel.
 
-## Bugfixes:
+## Bugfixes
 
 - Fixed upgrade counter - where it'd start from 100 and count down for every acquired level. It'll now count up beginning from 0.
 - Updated a lot of descriptions of ship's upgrades to ensure they reflect the reality - if values have changed on tooltips, it means these were out of date (again, no balance changes in this patch). \

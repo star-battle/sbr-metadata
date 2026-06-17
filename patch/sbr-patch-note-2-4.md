@@ -1,11 +1,20 @@
-# [v2.4] - 2021-09-05
+---
+version: "2.4"
+published: "2021-09-05T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [bugfixes]
+---
 
-## General:
+# Star Battle Reloaded 2.4 - Patch Notes
+
+## General
 
 - End game screen will now appear quicker - after 2s, relatively to the time where SB match concludes (once rating points are awarded), instead of 15s as it was previously.
   > This should effectively fix the problem where some of the games in SC2's match history were incorrectly flagged as undecided/lost for both sides, simply because neither of the players remained in the game long enough to report result of a match back to Battle.net.
 
-## Bugfixes:
+## Bugfixes
 
 - Leviathan: Verified and updated all tooltips in terms of their correctness.
 - Frigate: Fixed Torpedo cancel ~~exploit~~ trick:

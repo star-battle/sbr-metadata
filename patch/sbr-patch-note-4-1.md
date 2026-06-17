@@ -1,4 +1,13 @@
-# [v4.1] - 2021-11-02
+---
+version: "4.1"
+published: "2021-11-02T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [game-balance]
+---
+
+# Star Battle Reloaded 4.1 - Patch Notes
 
 ## General
 
@@ -8,6 +17,8 @@
 - Raven: renamed new ability "Analyze Weakness" to "Lock On" & clarified description.
 - Detection range of Spotter and Observer (if activated) will be visible to the team regardless if the unit is selected or not.
 - Restored kill counter on the unit panel.
+
+## Balance
 
 ### Arbiter
 

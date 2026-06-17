@@ -1,6 +1,15 @@
-# [v2.3] - 2021-08-28
+---
+version: "2.3"
+published: "2021-08-28T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [new-content, bugfixes]
+---
 
-## General:
+# Star Battle Reloaded 2.3 - Patch Notes
+
+## General
 
 - Introduced minimap icons of capital ships known from Omega (credits to Graveyard and Suge!). However, these icons will only be visible to team, unlike in the Omega. Enemy ships will remain to be shown as unidentifiable squares.
 - Enlarged message area for notifications - primarily for kill announcments. Also improved the way announcments are presented - in addition to player's names, the icon of their capital ships will also be shown.\
@@ -15,7 +24,7 @@
   >
   > As noted, this is experimental change due to the fact it also affects AI fighters. Further testing is required to determine whether it'll factor positively, or negatively. In case of the latter, we'll use another method, that will work on per-player basis.
 
-## Callouts:
+## Callouts
 
 Introduced callouts feature, which allows to *ping* certain UI elements, as a way of reporting various events to the team - hence "callouts". It's inspired by Heroes of the Storm.
 
@@ -46,7 +55,7 @@ To trigger a ping, use `MiddleMouseButton` on any of the above elements, and eve
 > 
 > *Technical limitations*.. it's _likely possible_ to make it work with `Alt+LMB`, but it migt have some unwanted side effects. Furthermore that specific combinations of keys (involving `Alt` as a left click modifier) is simply difficult to "catch", and for now it was deemed as something not worth the time needed for experimenting. It'll likely be revisited in the future, though.
 
-## Bugfixes:
+## Bugfixes
 
 - Variant `Balanced`:
   - Fixed computer players from `Team 2` aka `Optional slots` being taken as game participants (they'd get the capital ship), if there was less than 12 human players in the lobby, and `TrustGate` was disabled.

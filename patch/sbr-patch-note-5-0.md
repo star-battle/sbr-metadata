@@ -1,4 +1,13 @@
-# [v5.0] - 2026-03-XX - R1
+---
+version: "5.0"
+published: null
+updated: null
+revision: null
+status: dev
+tags: [new-content, game-balance, bugfixes, ui]
+---
+
+# Star Battle Reloaded 5.0 - Patch Notes
 
 - [__TODO__] Tourney rewards
 - [__TODO__] Look into adding some of the recent maps
@@ -12,7 +21,7 @@
 
 > More features will be added in the future..
 
-## Ships & balance
+## Ships & Balance
 
 - Queen reintroduced.
 
@@ -115,7 +124,7 @@
 
 - [ ] WIP
 
-#### Battlecrusier
+### Battlecruiser
 
 - Mini Yamato Gun:
   - Reduced damage from 1200 to 900
@@ -125,7 +134,7 @@
   - Removed bonus to hull regenaration from the upgrade (was +5 for each level).
   - Doubled bonus to shields regenaration from 25 to 50 per upgrade level.
 
-#### Dreadnought
+### Dreadnought
 
 - Increase base armor to 15.
 - Reduce armor per upgrade to +4.
@@ -142,24 +151,24 @@
 
 - Adjust magnetic mines damage to 550 (+55 per upgrade).
 
-### Raven:
+### Raven
 
 - Enhanced systems:
   - Reduced EMP bonus range from 1.0 to 0.5.
   - Removed EMP bonus damage to shields.
   - Reduced bonus regeneration granted by enhanced systems.
 
-#### Colossus
+### Colossus
 
 - Increase field disruptor radius from 4 to 4.5.
 - Increased base shield regeneration to 80.
 - Reduce shield regeneration per upgrade from 10 to 8.
 
-#### Arbiter
+### Arbiter
 
 - Force Field: Reduced cast range from 9 to 7
 
-#### Carrier
+### Carrier
 
 - Interceptors:
   - Increased move speed from 2.6 to 2.75
@@ -175,14 +184,14 @@
 - Fixed an issue where it was possible to cast Vortex further than the intended 10 range, pushing it to a maximum of ~15.
 - Fixed an issue where Warp In ability would be able to cooldown white under effect of BC' Lockdown.
 
-#### Leviathan
+### Leviathan
 
 - Reduced the extra damage from corruption from to 33% to 25%.
 
-#### Guardian
+### Guardian
 
-- Increased Guar- Reduced Corruptor Acquire Leash Reset Radius (radius within which new targets may be acquired after chasing) from 9 to 4.
-dian starting speed from 1.3007 to 1.3507 (+0.05).
+- Increased Guardian starting speed from 1.3007 to 1.3507 (+0.05).
+- Reduced Corruptor Acquire Leash Reset Radius (radius within which new targets may be acquired after chasing) from 9 to 4.
 - Increased Acid Spore base damage from 160 to 180.
 - Increased Broodlord acceleration from 0.1875 to 1.5.
 - Increased Corruptor acceleration from 0.9375 to 1.5.

@@ -1,4 +1,13 @@
-# [v4.0] - 2021-10-29
+---
+version: "4.0"
+published: "2021-10-29T00:00Z"
+updated: null
+revision: null
+status: live
+tags: [new-content, game-balance, ui, bugfixes]
+---
+
+# Star Battle Reloaded 4.0 - Patch Notes
 
 ## General
 
@@ -125,7 +134,7 @@
   - Clarified description and locked it behind a Corrosive Acid requirements.
 - Fixed **visual animation** of Guardian's movement. Where its body would wiggle to the sides, what was especially apparent during moonwalking.
 
-### Bugfixes
+## Bugfixes
 
 - Default game result screen will no longer appear. However, game will be flagged as concluded as soon as rating points are granted. What ensures its result will be reported to Battle.net, and appear correctly in player's match history.
 - Fixed another bunch of ability tooltips with wrong/outdated informations. (Hopefully one more patch, and it'll all be correct).
