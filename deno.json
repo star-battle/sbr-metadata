@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "@std/yaml": "jsr:@std/yaml@^1.1.1",
+    "@std/path": "jsr:@std/path@^1.1.5",
+    "@deno/gfm": "jsr:@deno/gfm@^0.10.0"
+  }
+}
