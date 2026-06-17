@@ -70,7 +70,7 @@
 
 It's a special game mode, that follows standard game rules, but allows players to bend these rules. Its main goal is to serve as practice & testing utility, however it's also completely compatible with multiplayer, thus it can be used for fun too!
 
-![](./v3.0/sandbox.jpg)
+![](./assets/3.0/sandbox.jpg)
 
 The main difference in the way it operates between singleplayer and multiplayer, is that if you play it solo, you also gain control of the enemy ships that you spawn, where if there are other players in the game - on the opposite team, then the spawned ship belongs to them and acts like a leaver ship.
 

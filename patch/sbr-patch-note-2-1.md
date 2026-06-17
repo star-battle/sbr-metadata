@@ -45,7 +45,7 @@ Current version of the map will now be shown in the tooltip of a Mission Timer. 
 
 This is done to make it easier to identify if the version of the game you play on NA/EU is the same one, because the version numbers shown in Arcade section, will pretty much always be out of sync, and shouldn't be taken care about.
 
-![](./v2.1/sbr-version.png)
+![](./assets/2.1/sbr-version.png)
 
 > To explain further:
 > - In general we'll do `MAJOR` releases whenever something new.. and *major* is introduced - be it gameplay content, some kind of mechanic or anything that affects the game significantly.

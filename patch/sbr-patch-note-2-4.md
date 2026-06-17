@@ -13,6 +13,6 @@
   - It's now considered to be a feature.
 - Restored missing alerts such as "Upgrade Complete" etc. ; most notably alerts related to nuke & torpedo. Additionally nuke alerts will now also be propagated to allies and pinged on the minimap.
 - Restored `MiddleMouseButton` to `CameraPush` under default hotkey profile - dragging camera with `MMB` works under default settings again. (As a side effect `MMB` can't be used for *pinging* Minerals label for now, due to `CameraPush` having higher priority).\
-  Reminder: [`MMB` can always be changed to another combination in Hotkey settings](./v2.4/hotkeys.png)
+  Reminder: [`MMB` can always be changed to another combination in Hotkey settings](./assets/2.4/hotkeys.png)
 - TrustGate: Fixed an issue where game wouldn't pick one of the players to observe, in order to maintain equal number of players on both teams (to avoid 5v6 etc.).
 - TrustGate: Fixed an issue where player who had bought HotS or LotV campaign exclusively - without buying WoL on the way, could fail to pass the gate, if they'd timed out during standard procedure.

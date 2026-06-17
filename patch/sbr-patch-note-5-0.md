@@ -7,7 +7,7 @@
 
 - Reintroduced basic starmap editor - allowing to edit and expand the pool of existing battle maps.
 
-[![](./v5.0/map-editor-s1.png)](https://www.youtube.com/watch?v=wO1D8iv6iFw)
+[![](./assets/5.0/map-editor-s1.png)](https://www.youtube.com/watch?v=wO1D8iv6iFw)
 [See more on YT](https://www.youtube.com/watch?v=wO1D8iv6iFw)
 
 > More features will be added in the future..

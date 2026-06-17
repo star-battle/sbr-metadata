@@ -26,13 +26,13 @@ As such the ship is locked to Sandbox mode, and shouldn't be judged until it rea
 
 Introduced alternative compact variant of the Console UI.
 
-![](./v4.3/slim-ui-active.png)\
-Compare the same scene: [before](./v4.3/slim-ui-before.png) and [after](./v4.3/slim-ui-after.png)
+![](./assets/4.3/slim-ui-active.png)\
+Compare the same scene: [before](./assets/4.3/slim-ui-before.png) and [after](./assets/4.3/slim-ui-after.png)
 
 ## Sandbox
 
 - Extended sandbox with additional options to aid with debugging and balancing. And at the same time providing some insight, and the way things work in the game - for those who seek them.\
-  ![](./v4.3/sandbox1.png)
+  ![](./assets/4.3/sandbox1.png)
 
 ## Bugfixes
 

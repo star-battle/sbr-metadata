@@ -4,7 +4,7 @@
 
 - Introduced minimap icons of capital ships known from Omega (credits to Graveyard and Suge!). However, these icons will only be visible to team, unlike in the Omega. Enemy ships will remain to be shown as unidentifiable squares.
 - Enlarged message area for notifications - primarily for kill announcments. Also improved the way announcments are presented - in addition to player's names, the icon of their capital ships will also be shown.\
-  ![](./v2.3/notification-kill.png)
+  ![](./assets/2.3/notification-kill.png)
 - `Install` menu on capital ships will now be *sticky* - meaning it won't close automatically after ability is acquired. And will be consistent with the way `Upgrade` menu operates.
   > This change *may* require some time to get used to, and wasn't exactly planned. However that inconsitency has shown to be a problem during implementation of ability callouts, and had to be either worked-around, or changed.
 - **[Experimental]** Increased `Air Formation Diameter` from 8 to 13 - units are now more likely to maintain formation.
@@ -37,8 +37,8 @@ etc.
 
 To trigger a ping, use `MiddleMouseButton` on any of the above elements, and everything relevant that's represented by the UI element, will be reported in team's chat.
 
-![](./v2.3/ping-abil1.png)
-![](./v2.3/ping-abil2.png)
+![](./assets/2.3/ping-abil1.png)
+![](./assets/2.3/ping-abil2.png)
 
 **Notice**: `MiddleMouseButton` can be changed in the Hotkeys menu in SC2 options to suit player's preferences.
 

@@ -16,7 +16,7 @@
 - Players assigned to observe the game will now gain access to classic Observer Panel, access to team chats of both teams and additionally have the ability to see the command card of any selected unit, browse profiles of ther players - achievements and such. The observer-player can still use `All chat` to communicate, thus there's a potential where it could be abused. If that happens, we'll take necessary steps.
 - Players who fail to pass the gate will be informed why, and what they can do about it.
 
-![](./v2.2/trust-fail-msg.png)
+![](./assets/2.2/trust-fail-msg.png)
 
 > At this point, TrustGate is considered to be feature complete. And hopefully bug free.
 

@@ -19,14 +19,14 @@
 
 - Extended standard unit panel with extra informations:
   - Movement speed (and engine upgrade level in case of capital ships).\
-    ![](./v4.0/infopanel1.png)
+    ![](./assets/4.0/infopanel1.png)
     > While this info was already available in the tooltips, now it's exposed in equal to its importance.
   - Passive life, energy and shield regeneration (in tooltips).\
-    ![](./v4.0/infopanel2.png)
+    ![](./assets/4.0/infopanel2.png)
     > 1st value = amount of vital regenerated per in-game second\
     > 2nd value = delay in in-game seconds needed for passive regen to kick in (aka *out of combat time*).
   - On-Board Fighters amount (in tooltips).\
-    ![](./v4.0/infopanel3.png)
+    ![](./assets/4.0/infopanel3.png)
 
 ## Ships & Balance
 
@@ -49,7 +49,7 @@
     > - `SB v3.1`: range 5.5 - 175 per second - x1 beam.
     > - `SBO/SBX`: range 8.0 - 150 per second - x2 beam.
   - Amount of HP being restored can be seen in the tooltip.\
-    ![](./v4.0/healray1.png)
+    ![](./assets/4.0/healray1.png)
   - Added second ray:
     - 1st ray will always prioritize most damaged ships - no change.
     - 2nd ray will ignore the damage aspect, and prioritize targets with lowest amount of **maximum** hull (not current). Additionally, it can re-target at any time. In situations where some other ship with lower total hull gets in its range, even though initial target hasn't been fully healed.
@@ -59,8 +59,8 @@
 ### Unit management
 
 - Added second control group for spawned units. Second control group is already in use by Guardian. Spawned Corruptors go to the first group, spawned Brood Lords to the second group.
-- Added formation movement - aimed at minion ships (currently Guardian specifically). It's enabled as default - it doesn't conflict with anything (such as OBF), and can potentially help when controlling multiple capital ships under the same selection. This feature [can be disabled in options](./v4.0/options-formation-movement.png).\
-  ![](./v4.0/formation1.png)
+- Added formation movement - aimed at minion ships (currently Guardian specifically). It's enabled as default - it doesn't conflict with anything (such as OBF), and can potentially help when controlling multiple capital ships under the same selection. This feature [can be disabled in options](./assets/4.0/options-formation-movement.png).\
+  ![](./assets/4.0/formation1.png)
 
 ### Arbiter
 
@@ -91,7 +91,7 @@
   - Effect lasts as long as Raven remains locked onto the target.
   - Maintaining the lock drains energy from Raven.
   
-  ![](./v4.0/raven-analyze.png)
+  ![](./assets/4.0/raven-analyze.png)
 
 ### Guardian
 

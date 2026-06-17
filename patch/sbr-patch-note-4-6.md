@@ -48,5 +48,5 @@
 - In its current state its merely a proof of concept - a potential idea we might expand onto, but with today's changes as well as recent changes game is not really balanced around it.
 - If you like the idea, please let us know!
 
-![](./v4.6/shields-off.png)\
-![](./v4.6/shields-on.png)
+![](./assets/4.6/shields-off.png)\
+![](./assets/4.6/shields-on.png)

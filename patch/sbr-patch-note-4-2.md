@@ -3,7 +3,7 @@
 ## General
 
 - Introduced new lobby option to the Balanced game variant, that allows players to team up before the game starts, and basically play in duo. The concept is very simple - players that want to end up one the same team, must choose the same Squad number in the lobby.\
-  ![](./v4.2/lobby-squad.png)
+  ![](./assets/4.2/lobby-squad.png)
 
 ### Colossus
 

@@ -35,7 +35,7 @@ Notice: This is an ongoing task - not all descriptions have been verified yet.
 
 ### 1. Gameplay Data Variants
 
-![](./v2.0/GameplayData.png)
+![](./assets/2.0/GameplayData.png)
 
 This feature was inspired by the ongoing issue - where since deparartue of zedu, each region had its own SB version.
 
@@ -127,7 +127,7 @@ First addition are minimap icons of the ships. Thanks to Graveyard and Suge for 
 
 ### 3. TrustGate
 
-![](./v2.0/TrustGate.jpg)
+![](./assets/2.0/TrustGate.jpg)
 
 TrustGate is autonomous anti-smurf system. That will attempt to keep obvious and semi-obvious players hiding behind newly created game profiles out of the game. Unfortunately, due to technical limitations this cannot be used to protect lobbies - that's why there are 15 slots to accompany it, even though the game won't allow more than 12 players to participate.
 

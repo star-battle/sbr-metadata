@@ -7,7 +7,7 @@
   - Introduced "Tip of the day" section. Each time it'll randomly show different tip. More tips will be introduced in future updates.
   > Thanks to AmigoDeer for art & design.
 
-![](./v4.4/ls-tips.png)
+![](./assets/4.4/ls-tips.png)
 
 ## Ships & Balance
 
@@ -28,7 +28,7 @@
   - Weapon has now it's arc limited to 150° from the front of the ship - it can no longer shoot at targets that are behind BC.
   - Can no longer be manually targeted - will always shoot at the closest enemy target within its range.
 
-![](./v4.4/mini-yamato-gun.png)
+![](./assets/4.4/mini-yamato-gun.png)
 
 ### Dreadnought
 
@@ -98,7 +98,7 @@
   - Current unit order and distance to that order.
   - Time needed to replenish specific vital at a given upgrade level (such as time needed to replenish shields from 0 to max).
 - Introduced an option to preview ship perks - such as skins, titles, colors (selection applies to newly spawned ships only).\
-  ![](./v4.4/sandbox-ship-perks.png)
+  ![](./assets/4.4/sandbox-ship-perks.png)
 
 ## Bugfixes
 
