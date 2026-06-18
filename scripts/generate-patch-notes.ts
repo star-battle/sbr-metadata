@@ -336,12 +336,10 @@ async function main() {
   // ── Generate index.html ──────────────────────────────────────────────────
 
   const listItems = entries.map((e) => {
-    const tagsHtml = e.tags.map((t) => `<span class="${tagClass(t)}">${t}</span>`).join(" ");
     return `<li>
     <a href="${e.htmlFile}">${escapeHtml(e.title)}</a>
     <span class="index-date">${formatDate(e.published)}</span>
     <span class="status-badge status-${e.status}">${STATUS_LABELS[e.status] ?? e.status}</span>
-    ${tagsHtml}
   </li>`;
   }).join("\n  ");
 
