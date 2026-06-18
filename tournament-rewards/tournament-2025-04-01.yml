@@ -1,0 +1,436 @@
+# yaml-language-server: $schema=../schema/tournament.schema.json
+id: starbattle2025
+url: 'https://sites.google.com/view/starbattle2025/home'
+date: '2025-04-01'
+teams:
+  - name: PUSH
+    tag: '[PU5H]'
+    place: 1
+    players:
+      - handle: 2-S2-1-2376319
+        battletag: 'Rosta#2881'
+        name: Rosta
+        rewards:
+          - RT1
+          - TF22
+      - handle: 2-S2-1-9472293
+        battletag: 'BabinHood#21731'
+        name: BabinHood
+        rewards:
+          - RT1
+          - TF22
+      - handle: 2-S2-1-2358400
+        battletag: 'Madkn1ght#2662'
+        name: Madknight
+        rewards:
+          - RT1
+          - TF22
+      - handle: 2-S2-1-7350608
+        battletag: 'ThePunisher#21659'
+        name: ThePunisher
+        rewards:
+          - RT1
+          - TF22
+      - handle: 2-S2-1-1941699
+        battletag: 'Damgood#2823'
+        name: Damgood
+        rewards:
+          - RT1
+          - TF22
+      - handle: 2-S2-1-3786347
+        battletag: 'MåntisShrimp#2725'
+        name: TairyHesticl
+        rewards:
+          - RT1
+          - TF22
+      - handle: 2-S2-1-1045021
+        battletag: 'Pringl#2495'
+        name: Pringl
+        rewards:
+          - RT1
+          - TF22
+  - name: Uprise
+    tag: '[Uprise]'
+    place: 2
+    players:
+      - handle: 2-S2-1-1517277
+        battletag: 'OGKush#2823'
+        name: LionInCage
+        rewards:
+          - RT2
+      - handle: 2-S2-1-2909599
+        battletag: 'KraKen#2755'
+        name: KraKen
+        rewards:
+          - RT2
+      - handle: 2-S2-1-2381777
+        battletag: 'Nox#12796'
+        name: Nox
+        rewards:
+          - RT2
+      - handle: 2-S2-1-1674601
+        battletag: 'Seb#2685'
+        name: Seb
+        rewards:
+          - RT2
+      - handle: 2-S2-1-10949121
+        battletag: 'DesktopPanda#1675'
+        name: DesktopPanda
+        rewards:
+          - RT2
+      - handle: 2-S2-1-10094627
+        battletag: 'GKR#21288'
+        name: GKR
+        rewards:
+          - RT2
+      - handle: 2-S2-2-2502119
+        battletag: 'Muse#21907'
+        name: Muse
+        rewards:
+          - RT2
+      - handle: 2-S2-1-2789082
+        battletag: 'RSS82#2637'
+        name: Redstar
+        rewards:
+          - RT2
+      - handle: 2-S2-1-8279175
+        battletag: 'schlachtvieh#21374'
+        name: unox
+        rewards:
+          - RT2
+  - name: Aces Retadred
+    tag: '[AcesHi]'
+    place: 3
+    players:
+      - handle: 2-S2-1-3743847
+        battletag: 'Abra#1318'
+        name: Abra
+        rewards:
+          - RT3
+      - handle: 2-S2-1-5958028
+        battletag: 'PraetorAlex#1650'
+        name: PraetorAlex
+        rewards:
+          - RT3
+      - handle: 2-S2-1-717000
+        battletag: 'IcE#2802'
+        name: BeggiIcE
+        rewards:
+          - RT3
+      - handle: 2-S2-1-6343384
+        battletag: 'Ray#12678'
+        name: Hacker
+        rewards:
+          - RT3
+      - handle: 2-S2-1-3556586
+        battletag: 'tripleQ#1596'
+        name: QQQ
+        rewards:
+          - RT3
+      - handle: 2-S2-1-4750064
+        battletag: 'GeneralX#1606'
+        name: GeneralX
+        rewards:
+          - RT3
+      - handle: 2-S2-1-5753237
+        battletag: 'RedDog#1655'
+        name: RedDog
+        rewards:
+          - RT3
+      - handle: 2-S2-1-3267338
+        battletag: 'TheMaster1#2375'
+        name: TheMaster
+        rewards:
+          - RT3
+      - handle: 2-S2-1-10376219
+        battletag: 'Jih4dJoe#1140'
+        name: JihadJoe
+        rewards:
+          - RT3
+      - handle: 2-S2-1-3746957
+        battletag: 'Delta9#1134'
+        name: DeltaNine
+        rewards:
+          - RT3
+  - name: RedAlert
+    tag: '[RA]'
+    place: 4
+    players:
+      - handle: 2-S2-2-2253572
+        battletag: 'Severfl#2297'
+        name: BattleStar
+        rewards:
+          - RT4
+      - handle: 2-S2-2-320919
+        battletag: 'sanek#1598'
+        name: sanek
+        rewards:
+          - RT4
+      - handle: 2-S2-2-939019
+        battletag: 'Animosus#2960'
+        name: Animosus
+        rewards:
+          - RT4
+      - handle: 2-S2-2-40115
+        battletag: 'Ivanopala#2657'
+        name: Ivanopala
+        rewards:
+          - RT4
+      - handle: 2-S2-2-1837026
+        battletag: 'Bionicle#21267'
+        name: Bio
+        rewards:
+          - RT4
+      - handle: 2-S2-2-222566
+        battletag: 'Kidnaper#21369'
+        name: Kidnaper
+        rewards:
+          - RT4
+      - handle: 2-S2-2-662565
+        battletag: 'SanyaWhite#2159'
+        name: SanyaWhite
+        rewards:
+          - RT4
+      - handle: 2-S2-2-830839
+        battletag: 'VeoRod#21101'
+        name: Veo
+        rewards:
+          - RT4
+  - name: NicE2U
+    tag: '[NIcE2U]'
+    place: 5
+    players:
+      - handle: 2-S2-1-7812664
+        battletag: 'Koda#22382'
+        name: YangWenli
+        rewards: []
+      - handle: 2-S2-1-5931619
+        battletag: 'NewHorizon#21110'
+        name: PlanetNine
+        rewards: []
+      - handle: 2-S2-1-2769478
+        battletag: 'PlasticOcean#2222'
+        name: ccktuss
+        rewards: []
+      - handle: 2-S2-1-4369013
+        battletag: 'Darkbut#2580'
+        name: Dar
+        rewards: []
+      - handle: 2-S2-1-10894900
+        battletag: 'Archon#12874'
+        name: Archon
+        rewards: []
+      - handle: 2-S2-1-6479072
+        battletag: 'DarkGuardian#2184'
+        name: Coutinior
+        rewards: []
+      - handle: 2-S2-2-2339369
+        battletag: 'Palpatine#2735'
+        name: Palpatine
+        rewards: []
+      - handle: 2-S2-1-378251
+        battletag: 'CoolBreeze#2337'
+        name: CoolBreeze
+        rewards: []
+      - handle: 2-S2-1-8831629
+        battletag: 'mikey#15997'
+        name: CoFFee
+        rewards: []
+  - name: Intruder
+    tag: '[5ints]'
+    place: 6
+    players:
+      - handle: 2-S2-1-10897145
+        battletag: '流苏苏苏#3617'
+        name: LIUSUSU
+        rewards: []
+      - handle: 2-S2-1-2739641
+        battletag: 'yzc#4598'
+        name: yzc
+        rewards: []
+      - handle: 2-S2-1-8336483
+        battletag: 'loong#11765'
+        name: loong
+        rewards: []
+      - handle: 2-S2-1-10128640
+        battletag: 'shenzhu9#3169'
+        name: Kneecap
+        rewards: []
+      - handle: 2-S2-1-4936606
+        battletag: 'Diaoyudao#3588'
+        name: Diaoyudao
+        rewards: []
+      - handle: 2-S2-1-10953319
+        battletag: '艾乐无忧#3950'
+        name: Orz
+        rewards: []
+      - handle: 2-S2-1-10897073
+        battletag: '绫波#3962'
+        name: Ayanami
+        rewards: []
+  - name: Star Ally
+    tag: '[CNEF]'
+    place: 7
+    players:
+      - handle: 2-S2-1-8375395
+        battletag: 'StarryNight#11431'
+        name: starrynight
+        rewards: []
+      - handle: 2-S2-1-3449608
+        battletag: 'kevin721#3465'
+        name: kevin
+        rewards: []
+      - handle: 2-S2-1-8226133
+        battletag: 'FXGF#11912'
+        name: FXGFri
+        rewards: []
+      - handle: 2-S2-1-10882272
+        battletag: 'iyOgnGAc#3868'
+        name: EFLAG
+        rewards: []
+      - handle: 2-S2-1-10408889
+        battletag: 'nebula#13966'
+        name: nebula
+        rewards: []
+      - handle: 2-S2-1-6927832
+        battletag: 'Starbattle#1532'
+        name: Roar
+        rewards: []
+      - handle: 2-S2-1-3830841
+        battletag: 'Rukawa#1621'
+        name: aslan
+        rewards: []
+      - handle: 2-S2-1-10900319
+        battletag: 'Yuguolol#1469'
+        name: flongcslol
+        rewards: []
+      - handle: 2-S2-1-11047493
+        battletag: '冰天绯翼#1543'
+        name: FreezeHeaven
+        rewards: []
+  - name: FRLNC
+    tag: '[FRLNC]'
+    place: 8
+    players:
+      - handle: 2-S2-1-5805572
+        battletag: 'jjbeast#1885'
+        name: jjbeast
+        rewards: []
+      - handle: 2-S2-1-4985610
+        battletag: 'RAW#11969'
+        name: RAW
+        rewards: []
+      - handle: 2-S2-1-4296643
+        battletag: 'SHAORAN#21182'
+        name: AlmirantGrau
+        rewards: []
+      - handle: 2-S2-1-3810660
+        battletag: 'jimber#1609'
+        name: jimber
+        rewards: []
+      - handle: 2-S2-1-1492462
+        battletag: 'thirteen#2724'
+        name: Thirteen
+        rewards: []
+      - handle: 2-S2-1-4577526
+        battletag: 'DratuDomine#1355'
+        name: DeadlyKiller
+        rewards: []
+      - handle: 2-S2-1-2086135
+        battletag: 'AdmiralNova#2466'
+        name: AdmiralNova
+        rewards: []
+      - handle: 2-S2-1-6963862
+        battletag: 'Pornexus#11848'
+        name: LOLz
+        rewards: []
+      - handle: 2-S2-1-1306501
+        battletag: 'DarkCommand#2120'
+        name: DarkCommand
+        rewards: []
+      - handle: 2-S2-1-4922980
+        battletag: 'Locuaz#11952'
+        name: Jan
+        rewards: []
+      - handle: 2-S2-1-371637
+        battletag: 'Gyges#2711'
+        name: Gyges
+        rewards: []
+
+# TODO: link starbattle.pro replays
+# [
+#     "https://starbattle.pro/game/907",
+#     "https://starbattle.pro/game/906",
+#     "https://starbattle.pro/game/905",
+#     "https://starbattle.pro/game/904",
+#     "https://starbattle.pro/game/896",
+#     "https://starbattle.pro/game/910",
+#     "https://starbattle.pro/game/909",
+#     "https://starbattle.pro/game/908",
+#     "https://starbattle.pro/game/914",
+#     "https://starbattle.pro/game/913",
+#     "https://starbattle.pro/game/912",
+#     "https://starbattle.pro/game/911",
+#     "https://starbattle.pro/game/920",
+#     "https://starbattle.pro/game/919",
+#     "https://starbattle.pro/game/918",
+#     "https://starbattle.pro/game/917",
+#     "https://starbattle.pro/game/916",
+#     "https://starbattle.pro/game/915",
+#     "https://starbattle.pro/game/935",
+#     "https://starbattle.pro/game/934",
+#     "https://starbattle.pro/game/933",
+#     "https://starbattle.pro/game/932",
+#     "https://starbattle.pro/game/931",
+#     "https://starbattle.pro/game/930",
+#     "https://starbattle.pro/game/929",
+#     "https://starbattle.pro/game/928",
+#     "https://starbattle.pro/game/927",
+#     "https://starbattle.pro/game/926",
+#     "https://starbattle.pro/game/925",
+#     "https://starbattle.pro/game/924",
+#     "https://starbattle.pro/game/923",
+#     "https://starbattle.pro/game/922",
+#     "https://starbattle.pro/game/921"
+# ]
+
+# TODO: maybe link replays for each match/game ? (count missmatch with above)
+# [
+#     "AcesHi vs RA game 2.SC2Replay",
+#     "AcesHi vs RA game 3.SC2Replay",
+#     "Finals PUSH vs Uprise G1 13-4-2025.SC2Replay",
+#     "Finals PUSH vs Uprise G3 13-4-2025.SC2Replay",
+#     "Finals PUSH vs Uprise G4 14-4-2025.SC2Replay",
+#     "Nice2u (win) vs CNEF.SC2Replay",
+#     "Nice2u (win) vs Intruders.SC2Replay",
+#     "nice2u_vs_freelancer.SC2Replay",
+#     "nice2u_vs_RA.SC2Replay",
+#     "P1_Uprise_5_vs_PU5H_0_grandfinals_G2.SC2Replay",
+#     "P1_Uprise_6_vs_AcesHi_0.SC2Replay",
+#     "P1_Uprise_6_vs_CNEF_0.SC2Replay",
+#     "P1_Uprise_6_vs_FRLNC_0.SC2Replay",
+#     "P1_Uprise_6_vs_Nice2U_0.SC2Replay",
+#     "P1_Uprise_6_vs_vs_RA_0.SC2Replay",
+#     "P1_Uprising_6_vs_5ints_0.SC2Replay",
+#     "P1 Aces vs Intruder 5-4-2025 (6-0).SC2Replay",
+#     "P1 Freelancers vs Aces 5-4-2025 (0-6).SC2Replay",
+#     "P1 Star Ally vs AcesHi.SC2Replay",
+#     "P2 - Uprise_6_vs_AcesHi_0.SC2Replay",
+#     "P2_Uprise_6_AcesHi_0_game2.SC2Replay",
+#     "Tournament - P1 - AcesHi vs Nice2U - 06-04.2025.SC2Replay",
+#     "Tournament_P1_G3 Ra vs 5ints 06-04-2025 (6-0)Replay.SC2Replay",
+#     "Tournament_P1_G4 Ra vs Nice2U 06-04-2025 (0-5)Replay.SC2Replay",
+#     "Tournament_P1_G5 Ra vs CNEF (6-0)Replay 11-04-2025.SC2Replay",
+#     "Tournament_P1_G6 Ra vs FRLNC (5-0)Replay 11-04-2025.SC2Replay",
+#     "Tournament_P1 Ra vs AcesHi 06-04-2025 (6-0)Replay.SC2Replay",
+#     "Tournament_P3_G8(1of3) Ra vs AcesHi (6-0)Replay 11-04-2025.SC2Replay",
+#     "Tournament PUSH vs 5Int 5-4-2025.SC2Replay",
+#     "Tournament PUSH vs AcesHi 5-4-2025.SC2Replay",
+#     "Tournament PUSH vs CNEF 5-4-2025.SC2Replay",
+#     "Tournament PUSH vs FRLNC 5-4-2025.SC2Replay",
+#     "Tournament PUSH vs Nice2U 5-4-2025.SC2Replay",
+#     "Tournament PUSH vs RA 11-4-2025.SC2Replay",
+#     "Tournament PUSH vs Uprise 5-4-2025.SC2Replay",
+#     "Tournament semifinals PUSH vs RA G1 12-4-2025.SC2Replay",
+#     "Tournament semifinals PUSH vs RA G2 12-4-2025.SC2Replay"
+# ]

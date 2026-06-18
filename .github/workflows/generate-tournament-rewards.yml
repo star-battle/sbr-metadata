@@ -1,0 +1,61 @@
+name: Generate Tournament Rewards
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'tournament-rewards/**'
+      - 'scripts/generate-tournament-rewards.ts'
+      - 'schema/tournament.schema.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Generate tournament rewards
+        run: deno run --allow-read --allow-write scripts/generate-tournament-rewards.ts
+
+      - name: Upload tournament artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tournament-rewards
+          path: build/tournament/
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: generate
+    concurrency:
+      group: deploy-star-battle-github-io
+      cancel-in-progress: false
+    steps:
+      - name: Download tournament artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: tournament-rewards
+          path: build/tournament/
+
+      - name: Deploy to star-battle.github.io
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          external_repository: star-battle/star-battle.github.io
+          publish_branch: main
+          publish_dir: ./build/tournament
+          destination_dir: tournament
+          keep_files: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'chore: update tournament rewards'
