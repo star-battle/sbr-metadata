@@ -13,3 +13,12 @@ insert_final_newline = true
 
 [*.csv]
 insert_final_newline = false
+
+[*.{ts,json,html}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+[deno.json,deno.lock]
+indent_size = 2
