@@ -38,3 +38,15 @@ jobs:
           git add build/patch/
           git diff --cached --quiet || git commit -m "chore: update patch notes build [skip ci]"
           git push origin release --force
+
+      - name: Deploy to star-battle.github.io
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          external_repository: star-battle/star-battle.github.io
+          publish_branch: main
+          publish_dir: ./build/patch
+          destination_dir: patch
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'chore: update patch notes'
