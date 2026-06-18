@@ -28,7 +28,7 @@ jobs:
           REPO_OWNER: ${{ github.repository_owner }}
           REPO_NAME: ${{ github.event.repository.name }}
           COMMIT_SHA: ${{ github.sha }}
-        run: deno run --allow-read --allow-write --allow-env scripts/generate-patch-notes.ts
+        run: deno run --allow-read --allow-write --allow-env --allow-run=git scripts/generate-patch-notes.ts
 
       - name: Publish to release branch
         run: |

@@ -14,8 +14,12 @@
  *   - build/patch/index.html  — listing page
  *
  * Usage:
- *   REPO_OWNER=star-battle REPO_NAME=patch-notes COMMIT_SHA=<sha> \
- *     deno run --allow-read --allow-write --allow-env scripts/generate-patch-notes.ts
+ *   deno run --allow-read --allow-write --allow-env --allow-run=git scripts/generate-patch-notes.ts
+ *
+ * Env vars (all optional — inferred from git when absent):
+ *   REPO_OWNER   GitHub org/user  (git remote get-url origin)
+ *   REPO_NAME    Repository name  (git remote get-url origin)
+ *   COMMIT_SHA   Commit ref       (git rev-parse HEAD)
  */
 
 import { parse as parseYaml } from "@std/yaml";
@@ -28,9 +32,36 @@ const PATCH_DIR = join(REPO_ROOT, "patch");
 const BUILD_DIR = join(REPO_ROOT, "build", "patch");
 const LAYOUT_PATH = join(REPO_ROOT, "layout", "default.html");
 
-const REPO_OWNER = Deno.env.get("REPO_OWNER") ?? "star-battle";
-const REPO_NAME = Deno.env.get("REPO_NAME") ?? "patch-notes";
-const COMMIT_SHA = Deno.env.get("COMMIT_SHA") ?? "master";
+// ── Git inference ──────────────────────────────────────────────────────────
+
+async function gitOut(args: string[]): Promise<string> {
+  try {
+    const { stdout } = await new Deno.Command("git", {
+      args,
+      stdout: "piped",
+      stderr: "null",
+    }).output();
+    return new TextDecoder().decode(stdout).trim();
+  } catch {
+    return "";
+  }
+}
+
+const _gitSha = await gitOut(["rev-parse", "HEAD"]);
+const _gitRemote = await gitOut(["remote", "get-url", "origin"]);
+const _remoteMatch = _gitRemote.match(/[:/]([^/:]+)\/([^/]+?)(?:\.git)?$/);
+
+function mustResolve(name: string, value: string | undefined): string {
+  if (!value) {
+    console.error(`ERROR: ${name} is not set and could not be inferred from git.`);
+    Deno.exit(1);
+  }
+  return value;
+}
+
+const REPO_OWNER = mustResolve("REPO_OWNER", Deno.env.get("REPO_OWNER") ?? _remoteMatch?.[1]);
+const REPO_NAME  = mustResolve("REPO_NAME",  Deno.env.get("REPO_NAME")  ?? _remoteMatch?.[2]);
+const COMMIT_SHA = mustResolve("COMMIT_SHA", Deno.env.get("COMMIT_SHA") ?? (_gitSha || undefined));
 
 const RAW_BASE = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${COMMIT_SHA}`;
 
