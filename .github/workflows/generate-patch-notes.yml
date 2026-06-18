@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'patch/**'
+      - 'scripts/generate-patch-notes.ts'
+      - 'layout/default.html'
   workflow_dispatch:
 
 permissions:
