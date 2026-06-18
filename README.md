@@ -1,6 +1,11 @@
 # sbr-patch-notes
 
-Source and build pipeline for [Star Battle Reloaded](https://discord.gg/8pNrrM6JMF) — a StarCraft II Arcade game. Deploys to [star-battle.github.io](https://star-battle.github.io).
+Source and build pipeline for [Star Battle Reloaded](https://star-battle.talv.space).
+
+For consumption by:
+- Website (official and others) 
+- 3rd party applications
+- SC2Map on Battle.net
 
 ## Structure
 
@@ -30,7 +35,7 @@ deno run --allow-read --allow-write scripts/generate-tournament-rewards.ts
 
 ## CI
 
-Three workflows deploy to `star-battle/star-battle.github.io` on push to `master`:
+Three workflows deploy artifacts on push to `master`:
 
 | Workflow | Trigger paths | Deploys to |
 |---|---|---|
@@ -38,7 +43,7 @@ Three workflows deploy to `star-battle/star-battle.github.io` on push to `master
 | `deploy-web` | `web/**` | `/` |
 | `generate-tournament-rewards` | `tournament-rewards/**` | `/tournament/` |
 
-All share a concurrency group to serialize deploys. Requires `PAGES_DEPLOY_TOKEN` secret.
+All share a concurrency group to serialize deploys.
 
 ## Adding content
 
