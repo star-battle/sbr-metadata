@@ -1,4 +1,4 @@
-name: Generate Patch Index & HTML
+name: Generate Patch Notes
 
 on:
   push:
@@ -23,25 +23,18 @@ jobs:
         with:
           deno-version: v2.x
 
-      - name: Generate index.json
+      - name: Generate patch notes
         env:
           REPO_OWNER: ${{ github.repository_owner }}
           REPO_NAME: ${{ github.event.repository.name }}
           COMMIT_SHA: ${{ github.sha }}
-        run: deno run --allow-read --allow-write --allow-env scripts/generate-index.ts
-
-      - name: Generate HTML
-        env:
-          REPO_OWNER: ${{ github.repository_owner }}
-          REPO_NAME: ${{ github.event.repository.name }}
-          COMMIT_SHA: ${{ github.sha }}
-        run: deno run --allow-read --allow-write --allow-env scripts/generate-html.ts
+        run: deno run --allow-read --allow-write --allow-env scripts/generate-patch-notes.ts
 
       - name: Publish to release branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -B release
-          git add patch/index.json patch/*.html
-          git diff --cached --quiet || git commit -m "chore: update patch index and HTML [skip ci]"
+          git add build/patch/
+          git diff --cached --quiet || git commit -m "chore: update patch notes build [skip ci]"
           git push origin release --force
