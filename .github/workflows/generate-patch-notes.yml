@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   generate:
@@ -30,14 +30,11 @@ jobs:
           COMMIT_SHA: ${{ github.sha }}
         run: deno run --allow-read --allow-write --allow-env --allow-run=git scripts/generate-patch-notes.ts
 
-      - name: Publish to release branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -B release
-          git add build/patch/
-          git diff --cached --quiet || git commit -m "chore: update patch notes build [skip ci]"
-          git push origin release --force
+      - name: Upload patch notes artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: patch-notes
+          path: build/patch/
 
       - name: Deploy to star-battle.github.io
         uses: peaceiris/actions-gh-pages@v4
