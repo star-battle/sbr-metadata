@@ -18,18 +18,18 @@ Each script is self-contained and validates its input strictly — it exits 1 on
 |---|---|---|
 | `generate-patch-notes.ts` | `patch/*.md` | `build/patch/*.html`, `index.html`, `index.json` |
 | `generate-web-index.ts` | `web/index.md`, `web/external-sites.json` | `build/web/` |
-| `generate-tournament-rewards.ts` | `tournament-rewards/*.yml` | `build/tournament/*.yml`, `index.json` |
+| `generate-tournament-rewards.ts` | `tournament/items/*.yml` | `build/tournament/*.yml`, `index.json` |
 
 ## Schemas
 
 Both schemas are JSON Schema draft-07 in `schema/`. Validation is hand-written in each script (no external library).
 
 - `patch-note.schema.json` — frontmatter fields: `version`, `published`, `updated`, `revision`, `status`, `tags`
-- `tournament.schema.json` — tournament YAML fields: `id`, `url` (nullable), `date` (ISO 8601), `teams[].{name,tag,place,players[].{handle,battletag,name,rewards[]}}`
+- `tournament-item.schema.json` — tournament YAML fields: `id`, `url` (nullable), `date` (ISO 8601), `teams[].{name,tag,place,players[].{handle,battletag,name,rewards[]}}`
 
 ## Tournament data
 
-Tournament files are named `tournament-YYYY-MM-DD.yml` (date = tournament start). The `legacy.csv` is a historical flat database (1634 players, reward columns T1–T5, RT1–RT4, TF0–TF22) — it is not processed by the pipeline; it's reference data.
+Tournament data lives in `tournament/`. YAML files are in `tournament/items/`, named `tournament-YYYY-MM-DD.yml` (date = tournament start). The `tournament/legacy.csv` is a historical flat database (1634 players, reward columns T1–T5, RT1–RT4, TF0–TF22) — it is not processed by the pipeline; it's reference data.
 
 Reward code conventions:
 - `T1`–`T5`: legacy tournament stars (1–4 = top-4 finish, 5 = participated)
