@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=../schema/tournament.schema.json
+# yaml-language-server: $schema=../../schema/tournament-item.schema.json
 id: starbattle2025
 url: 'https://sites.google.com/view/starbattle2025/home'
 date: '2025-04-01'

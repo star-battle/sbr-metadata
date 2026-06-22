@@ -18,7 +18,7 @@ import { join, dirname, fromFileUrl } from "@std/path";
 
 const SCRIPT_DIR = dirname(fromFileUrl(import.meta.url));
 const REPO_ROOT = join(SCRIPT_DIR, "..");
-const TOURNAMENT_DIR = join(REPO_ROOT, "tournament-rewards", "items");
+const TOURNAMENT_DIR = join(REPO_ROOT, "tournament", "items");
 const BUILD_DIR = join(REPO_ROOT, "build", "tournament");
 
 // ── Types ──────────────────────────────────────────────────────────────────

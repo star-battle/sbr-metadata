@@ -5,9 +5,9 @@ on:
     branches:
       - master
     paths:
-      - 'tournament-rewards/**'
+      - 'tournament/**'
       - 'scripts/generate-tournament-rewards.ts'
-      - 'schema/tournament.schema.json'
+      - 'schema/tournament-item.schema.json'
   workflow_dispatch:
 
 permissions:
