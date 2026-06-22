@@ -1,0 +1,11 @@
+{
+  "deno.enable": true,
+  "json.schemaDownload.trustedDomains": {
+    "https://raw.githubusercontent.com/denoland/deno/": true,
+  },
+  "yaml.schemas": {
+    "schema/tournament-item.schema.json": [
+      "tournament/items/*.yml"
+    ]
+  }
+}
