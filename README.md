@@ -12,7 +12,7 @@ For consumption by:
 ```
 patch/                      patch note markdown files (sbr-patch-note-X-Y.md) + assets/
 web/                        website frontpage (index.md) + external-sites.json redirects
-tournament-rewards/         tournament result YAML files (tournament-YYYY-MM-DD.yml) + legacy.csv
+tournament/                 tournament result YAML files (tournament-YYYY-MM-DD.yml) + classic rewards
 schema/                     JSON Schema files for frontmatter/YAML validation
 scripts/                    Deno build scripts
 layout/default.html         shared HTML template
