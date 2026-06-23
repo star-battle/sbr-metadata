@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "classic-rewards",
+  "title": "SBR Classic Tournament Cumulative Rewards",
+  "description": "All-time cumulative reward totals from legacy (pre-SBR) tournaments, keyed by player handle.",
+  "type": "object",
+  "required": ["players"],
+  "properties": {
+    "players": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "handle", "placements"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Display name inferred from battletag, toon_name, or handle"
+          },
+          "handle": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d+-S2-\\d+-\\d+$"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^\\d+-S2-\\d+-\\d+$"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            ],
+            "description": "StarCraft II account handle(s)"
+          },
+          "toon_name": {
+            "type": "string",
+            "pattern": "^.+#\\d+$",
+            "description": "SC2 display name with discriminator, e.g. AaGaM#150"
+          },
+          "battletag": {
+            "type": "string",
+            "pattern": "^.+#\\d+$",
+            "description": "Battle.net BattleTag, e.g. AaGaM#2803"
+          },
+          "placements": {
+            "type": "object",
+            "required": ["T1", "T2", "T3", "T4", "T5"],
+            "properties": {
+              "T1": { "type": "integer", "description": "1st-place finishes" },
+              "T2": { "type": "integer", "description": "2nd-place finishes" },
+              "T3": { "type": "integer", "description": "3rd-place finishes" },
+              "T4": { "type": "integer", "description": "4th-place finishes" },
+              "T5": { "type": "integer", "description": "Participation count" }
+            },
+            "additionalProperties": false,
+            "description": "Cumulative placement counts across all classic tournaments"
+          },
+          "rewards": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "TF0", "TF1", "TF2", "TF3", "TF4", "TF5", "TF6", "TF7", "TF8", "TF9",
+                "TF10", "TF11", "TF12", "TF13", "TF14", "TF15", "TF16", "TF17", "TF18", "TF19",
+                "TF20", "TF21", "TF22"
+              ]
+            },
+            "description": "Tournament Finals reward codes earned"
+          }
+        },
+        "additionalProperties": false
+      },
+      "description": "One entry per CSV row (one per unique handle)"
+    }
+  },
+  "additionalProperties": false
+}

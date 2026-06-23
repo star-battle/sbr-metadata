@@ -6,6 +6,9 @@
   "yaml.schemas": {
     "schema/tournament-item.schema.json": [
       "tournament/items/*.yml"
+    ],
+    "schema/tournament-classic-rewards.schema.json": [
+      "tournament/classic/*.yml"
     ]
   }
 }
