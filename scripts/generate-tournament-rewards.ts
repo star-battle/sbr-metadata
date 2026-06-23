@@ -33,7 +33,7 @@ interface Player {
 interface Team {
   name: string;
   tag: string;
-  place: number;
+  placement: number;
   players: Player[];
 }
 
@@ -89,8 +89,8 @@ function validateTournament(raw: unknown, file: string): Tournament {
     if (typeof team.tag !== "string" || team.tag.length === 0) {
       throw new Error(`[${file}] teams[${ti}].tag must be a non-empty string`);
     }
-    if (typeof team.place !== "number" || !Number.isInteger(team.place) || team.place < 1) {
-      throw new Error(`[${file}] teams[${ti}].place must be a positive integer`);
+    if (typeof team.placement !== "number" || !Number.isInteger(team.placement) || team.placement < 1) {
+      throw new Error(`[${file}] teams[${ti}].placement must be a positive integer`);
     }
     if (!Array.isArray(team.players) || team.players.length === 0) {
       throw new Error(`[${file}] teams[${ti}].players must be a non-empty array`);
@@ -132,7 +132,7 @@ function validateTournament(raw: unknown, file: string): Tournament {
     return {
       name: team.name,
       tag: team.tag,
-      place: team.place,
+      placement: team.placement,
       players,
     };
   });
@@ -197,9 +197,9 @@ async function main() {
 
 function checkConsistency(t: Tournament, file: string): string[] {
   const warnings: string[] = [];
-  const places = new Set(t.teams.map((team) => team.place));
-  if (places.size !== t.teams.length) {
-    warnings.push(`[${file}] duplicate place values across teams`);
+  const placements = new Set(t.teams.map((team) => team.placement));
+  if (placements.size !== t.teams.length) {
+    warnings.push(`[${file}] duplicate placement values across teams`);
   }
   return warnings;
 }

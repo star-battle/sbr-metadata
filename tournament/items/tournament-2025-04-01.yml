@@ -4,200 +4,166 @@ date: '2025-04-01'
 teams:
   - name: PUSH
     tag: '[PU5H]'
-    place: 1
+    placement: 1
     players:
       - handle: 2-S2-1-2376319
         battletag: 'Rosta#2881'
         name: Rosta
         rewards:
-          - RT1
           - TF22
       - handle: 2-S2-1-9472293
         battletag: 'BabinHood#21731'
         name: BabinHood
         rewards:
-          - RT1
           - TF22
       - handle: 2-S2-1-2358400
         battletag: 'Madkn1ght#2662'
         name: Madknight
         rewards:
-          - RT1
           - TF22
       - handle: 2-S2-1-7350608
         battletag: 'ThePunisher#21659'
         name: ThePunisher
         rewards:
-          - RT1
           - TF22
       - handle: 2-S2-1-1941699
         battletag: 'Damgood#2823'
         name: Damgood
         rewards:
-          - RT1
           - TF22
       - handle: 2-S2-1-3786347
         battletag: 'MåntisShrimp#2725'
         name: TairyHesticl
         rewards:
-          - RT1
           - TF22
       - handle: 2-S2-1-1045021
         battletag: 'Pringl#2495'
         name: Pringl
         rewards:
-          - RT1
           - TF22
   - name: Uprise
     tag: '[Uprise]'
-    place: 2
+    placement: 2
     players:
       - handle: 2-S2-1-1517277
         battletag: 'OGKush#2823'
         name: LionInCage
-        rewards:
-          - RT2
+        rewards: []
       - handle: 2-S2-1-2909599
         battletag: 'KraKen#2755'
         name: KraKen
-        rewards:
-          - RT2
+        rewards: []
       - handle: 2-S2-1-2381777
         battletag: 'Nox#12796'
         name: Nox
-        rewards:
-          - RT2
+        rewards: []
       - handle: 2-S2-1-1674601
         battletag: 'Seb#2685'
         name: Seb
-        rewards:
-          - RT2
+        rewards: []
       - handle: 2-S2-1-10949121
         battletag: 'DesktopPanda#1675'
         name: DesktopPanda
-        rewards:
-          - RT2
+        rewards: []
       - handle: 2-S2-1-10094627
         battletag: 'GKR#21288'
         name: GKR
-        rewards:
-          - RT2
+        rewards: []
       - handle: 2-S2-2-2502119
         battletag: 'Muse#21907'
         name: Muse
-        rewards:
-          - RT2
+        rewards: []
       - handle: 2-S2-1-2789082
         battletag: 'RSS82#2637'
         name: Redstar
-        rewards:
-          - RT2
+        rewards: []
       - handle: 2-S2-1-8279175
         battletag: 'schlachtvieh#21374'
         name: unox
-        rewards:
-          - RT2
+        rewards: []
   - name: Aces Retadred
     tag: '[AcesHi]'
-    place: 3
+    placement: 3
     players:
       - handle: 2-S2-1-3743847
         battletag: 'Abra#1318'
         name: Abra
-        rewards:
-          - RT3
+        rewards: []
       - handle: 2-S2-1-5958028
         battletag: 'PraetorAlex#1650'
         name: PraetorAlex
-        rewards:
-          - RT3
+        rewards: []
       - handle: 2-S2-1-717000
         battletag: 'IcE#2802'
         name: BeggiIcE
-        rewards:
-          - RT3
+        rewards: []
       - handle: 2-S2-1-6343384
         battletag: 'Ray#12678'
         name: Hacker
-        rewards:
-          - RT3
+        rewards: []
       - handle: 2-S2-1-3556586
         battletag: 'tripleQ#1596'
         name: QQQ
-        rewards:
-          - RT3
+        rewards: []
       - handle: 2-S2-1-4750064
         battletag: 'GeneralX#1606'
         name: GeneralX
-        rewards:
-          - RT3
+        rewards: []
       - handle: 2-S2-1-5753237
         battletag: 'RedDog#1655'
         name: RedDog
-        rewards:
-          - RT3
+        rewards: []
       - handle: 2-S2-1-3267338
         battletag: 'TheMaster1#2375'
         name: TheMaster
-        rewards:
-          - RT3
+        rewards: []
       - handle: 2-S2-1-10376219
         battletag: 'Jih4dJoe#1140'
         name: JihadJoe
-        rewards:
-          - RT3
+        rewards: []
       - handle: 2-S2-1-3746957
         battletag: 'Delta9#1134'
         name: DeltaNine
-        rewards:
-          - RT3
+        rewards: []
   - name: RedAlert
     tag: '[RA]'
-    place: 4
+    placement: 4
     players:
       - handle: 2-S2-2-2253572
         battletag: 'Severfl#2297'
         name: BattleStar
-        rewards:
-          - RT4
+        rewards: []
       - handle: 2-S2-2-320919
         battletag: 'sanek#1598'
         name: sanek
-        rewards:
-          - RT4
+        rewards: []
       - handle: 2-S2-2-939019
         battletag: 'Animosus#2960'
         name: Animosus
-        rewards:
-          - RT4
+        rewards: []
       - handle: 2-S2-2-40115
         battletag: 'Ivanopala#2657'
         name: Ivanopala
-        rewards:
-          - RT4
+        rewards: []
       - handle: 2-S2-2-1837026
         battletag: 'Bionicle#21267'
         name: Bio
-        rewards:
-          - RT4
+        rewards: []
       - handle: 2-S2-2-222566
         battletag: 'Kidnaper#21369'
         name: Kidnaper
-        rewards:
-          - RT4
+        rewards: []
       - handle: 2-S2-2-662565
         battletag: 'SanyaWhite#2159'
         name: SanyaWhite
-        rewards:
-          - RT4
+        rewards: []
       - handle: 2-S2-2-830839
         battletag: 'VeoRod#21101'
         name: Veo
-        rewards:
-          - RT4
+        rewards: []
   - name: NicE2U
     tag: '[NIcE2U]'
-    place: 5
+    placement: 5
     players:
       - handle: 2-S2-1-7812664
         battletag: 'Koda#22382'
@@ -237,7 +203,7 @@ teams:
         rewards: []
   - name: Intruder
     tag: '[5ints]'
-    place: 6
+    placement: 6
     players:
       - handle: 2-S2-1-10897145
         battletag: '流苏苏苏#3617'
@@ -269,7 +235,7 @@ teams:
         rewards: []
   - name: Star Ally
     tag: '[CNEF]'
-    place: 7
+    placement: 7
     players:
       - handle: 2-S2-1-8375395
         battletag: 'StarryNight#11431'
@@ -309,7 +275,7 @@ teams:
         rewards: []
   - name: FRLNC
     tag: '[FRLNC]'
-    place: 8
+    placement: 8
     players:
       - handle: 2-S2-1-5805572
         battletag: 'jjbeast#1885'

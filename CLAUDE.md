@@ -25,7 +25,7 @@ Each script is self-contained and validates its input strictly — it exits 1 on
 Schemas are JSON Schema draft-07 in `schema/`. Validation is hand-written in each build script (no external library).
 
 - `patch-note.schema.json` — frontmatter fields: `version`, `published`, `updated`, `revision`, `status`, `tags`
-- `tournament-item.schema.json` — tournament YAML fields: `id`, `url` (nullable), `date` (ISO 8601), `teams[].{name,tag,place,players[].{handle,battletag,name,rewards[]}}`
+- `tournament-item.schema.json` — tournament YAML fields: `id`, `url` (nullable), `date` (ISO 8601), `teams[].{name,tag,placement,players[].{handle,battletag,name,rewards[]}}`
 - `tournament-classic-rewards.schema.json` — classic rewards YAML fields: `players[].{name,handle,toon_name?,battletag?,placements.{T1,T2,T3,T4,T5},rewards[]?}`
 
 ## Tournament data
@@ -34,8 +34,9 @@ Tournament data lives in `tournament/`. YAML files are in `tournament/items/`, n
 
 Reward code conventions:
 - `T1`–`T5`: legacy tournament stars (1–4 = top-4 finish, 5 = participated)
-- `RT1`–`RT4`: SBR-era stars (1–3 = top-3, 4 = participated)
 - `TF0`–`TF22`: Tournament Finals flags (per-event skin/unlock)
+
+SBR-era placement rewards (RT1–RT4) are inferred from `team.placement` — not stored in player `rewards`.
 
 ## Conventions
 
