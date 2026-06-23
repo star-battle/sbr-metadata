@@ -18,25 +18,23 @@ Each script is self-contained and validates its input strictly — it exits 1 on
 |---|---|---|
 | `generate-patch-notes.ts` | `patch/*.md` | `build/patch/*.html`, `index.html`, `index.json` |
 | `generate-web-index.ts` | `web/index.md`, `web/external-sites.json` | `build/web/` |
-| `generate-tournament-rewards.ts` | `tournament/items/*.yml` | `build/tournament/*.yml`, `index.json` |
+| `generate-tournament-rewards.ts` | `tournament/items/*.yml`, `tournament/classic/classic-rewards.yml` | `build/tournament/*.json`, `index.json`, `player-rewards.json` |
 
 ## Schemas
 
-Schemas are JSON Schema draft-07 in `schema/`. Validation is hand-written in each build script (no external library).
-
-- `patch-note.schema.json` — frontmatter fields: `version`, `published`, `updated`, `revision`, `status`, `tags`
-- `tournament-item.schema.json` — tournament YAML fields: `id`, `url` (nullable), `date` (ISO 8601), `teams[].{name,tag,placement,players[].{handle,battletag,name,rewards[]}}`
-- `tournament-classic-rewards.schema.json` — classic rewards YAML fields: `players[].{name,handle,toon_name?,battletag?,placements.{T1,T2,T3,T4,T5},rewards[]?}`
+Input files are validated against JSON Schema draft-07 definitions in `schema/`. Validation is hand-written in each build script (no external library).
 
 ## Tournament data
 
-Tournament data lives in `tournament/`. YAML files are in `tournament/items/`, named `tournament-YYYY-MM-DD.yml` (date = tournament start). The `tournament/classic/classic-rewards.yml` contains legacy player rewards (1634 players, migrated from the now-removed `legacy.csv` by `scripts/migrate-classic-rewards.ts`).
+Tournament data lives in `tournament/`. SBR-era YAML files are in `tournament/items/`, named `tournament-YYYY-MM-DD.yml` (date = tournament start). Classic-era cumulative rewards are in `tournament/classic/classic-rewards.yml` (1634 players).
 
 Reward code conventions:
 - `T1`–`T5`: legacy tournament stars (1–4 = top-4 finish, 5 = participated)
+- `RT1`–`RT3`: SBR-era top-3 placement stars, inferred from `team.placement` (not stored in source YAML)
+- `RT4`: SBR-era participation star (placement 4+, i.e. players outside top 3)
 - `TF0`–`TF22`: Tournament Finals flags (per-event skin/unlock)
 
-SBR-era placement rewards (RT1–RT4) are inferred from `team.placement` — not stored in player `rewards`.
+The build script aggregates classic + SBR rewards into `player-rewards.json`: T1–T5 preserved from classic, RT1–RT4 accumulated from SBR placements, TF codes unioned across all sources.
 
 ## Conventions
 

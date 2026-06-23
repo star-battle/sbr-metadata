@@ -5,9 +5,13 @@
  *   - Parses and validates the tournament structure
  *   - Writes the validated data as JSON to build/tournament/{name}.json
  *
+ * Then aggregates all rewards across classic-era and SBR-era tournaments
+ * into a single player-rewards.json keyed by player handle.
+ *
  * Outputs:
- *   - build/tournament/index.json  — metadata index for third-party consumers
- *   - build/tournament/*.json      — individual tournament files
+ *   - build/tournament/index.json          — metadata index for third-party consumers
+ *   - build/tournament/*.json              — individual tournament files
+ *   - build/tournament/player-rewards.json — aggregated per-player rewards
  *
  * Usage:
  *   deno run --allow-read --allow-write scripts/generate-tournament-rewards.ts
@@ -21,24 +25,33 @@ import { join, dirname, fromFileUrl } from "@std/path";
 const SCRIPT_DIR = dirname(fromFileUrl(import.meta.url));
 const REPO_ROOT = join(SCRIPT_DIR, "..");
 const TOURNAMENT_DIR = join(REPO_ROOT, "tournament", "items");
+const CLASSIC_REWARDS_PATH = join(REPO_ROOT, "tournament", "classic", "classic-rewards.yml");
 const BUILD_DIR = join(REPO_ROOT, "build", "tournament");
 
 const INPUT_EXT = ".yml";
 const OUTPUT_EXT = ".json";
 const INDEX_FILENAME = "index.json";
+const PLAYER_REWARDS_FILENAME = "player-rewards.json";
 const JSON_INDENT = 2;
 const URL_SCHEME = "https://";
+
+// RT1–RT3: top-3 placement; RT4: participation (placement 4+)
+const RT_PLACEMENT_KEYS: Record<number, string> = { 1: "RT1", 2: "RT2", 3: "RT3" };
 
 const HANDLE_RE = /^\d+-S2-\d+-\d+$/;
 const BATTLETAG_RE = /^.+#\d+$/;
 const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
-// T1–T5: legacy placement stars; TF0–TF22: Tournament Finals flags
-const VALID_REWARD_CODES = new Set([
-  "T1", "T2", "T3", "T4", "T5",
+const VALID_TF_CODES = new Set([
   "TF0", "TF1", "TF2", "TF3", "TF4", "TF5", "TF6", "TF7", "TF8", "TF9",
   "TF10", "TF11", "TF12", "TF13", "TF14", "TF15", "TF16", "TF17", "TF18", "TF19",
   "TF20", "TF21", "TF22",
+]);
+
+// T1–T5: legacy placement stars; TF0–TF22: Tournament Finals flags
+const VALID_REWARD_CODES = new Set([
+  "T1", "T2", "T3", "T4", "T5",
+  ...VALID_TF_CODES,
 ]);
 
 // ── Types ─────────────────────────────────────────────────────────────────
@@ -68,6 +81,20 @@ interface IndexEntry {
   id: string;
   date: string;
   file: string;
+}
+
+interface AggregatedPlacements {
+  T1: number; T2: number; T3: number; T4: number; T5: number;
+  RT1: number; RT2: number; RT3: number; RT4: number;
+  [key: string]: number;
+}
+
+interface AggregatedPlayer {
+  name: string;
+  handle: string | string[];
+  battletag?: string;
+  placements: AggregatedPlacements;
+  rewards: string[];
 }
 
 // ── Validation ────────────────────────────────────────────────────────────
@@ -176,6 +203,160 @@ function checkConsistency(tournament: Tournament, filename: string): string[] {
   return warnings;
 }
 
+// ── Classic rewards ───────────────────────────────────────────────────────
+
+function zeroPlacements(): AggregatedPlacements {
+  return { T1: 0, T2: 0, T3: 0, T4: 0, T5: 0, RT1: 0, RT2: 0, RT3: 0, RT4: 0 };
+}
+
+async function loadClassicRewards(): Promise<Map<string, AggregatedPlayer>> {
+  console.log("Loading classic rewards...");
+
+  const content = await Deno.readTextFile(CLASSIC_REWARDS_PATH);
+  const raw = parseYaml(content) as { players?: unknown[] };
+
+  if (!raw?.players || !Array.isArray(raw.players)) {
+    throw new Error("classic-rewards.yml: expected top-level 'players' array");
+  }
+
+  const dataMap = new Map<string, AggregatedPlayer>();
+  let withRewards = 0;
+
+  for (const entry of raw.players) {
+    const record = entry as Record<string, unknown>;
+    const name = record.name as string;
+    const handle = record.handle as string | string[];
+    const battletag = record.battletag as string | undefined;
+    const placements = record.placements as Record<string, number>;
+    const rewards = (record.rewards as string[] | undefined) ?? [];
+
+    const player: AggregatedPlayer = {
+      name,
+      handle,
+      ...(battletag ? { battletag } : {}),
+      placements: {
+        ...zeroPlacements(),
+        T1: placements.T1, T2: placements.T2, T3: placements.T3,
+        T4: placements.T4, T5: placements.T5,
+      },
+      rewards: [...rewards],
+    };
+
+    if (rewards.length > 0) withRewards++;
+
+    const handles = Array.isArray(handle) ? handle : [handle];
+    for (const h of handles) {
+      if (dataMap.has(h)) {
+        console.warn(`  WARN: duplicate handle ${h} in classic-rewards.yml (later entry wins)`);
+      }
+      dataMap.set(h, player);
+    }
+  }
+
+  console.log(`  Loaded ${raw.players.length} entries (${dataMap.size} unique handles) from tournament/classic/classic-rewards.yml`);
+  console.log(`  ${withRewards} players with TF rewards, ${raw.players.length - withRewards} without`);
+
+  return dataMap;
+}
+
+// ── Reward aggregation ───────────────────────────────────────────────────
+
+interface MergeStats {
+  updated: number;
+  added: number;
+  rtCounts: Record<string, number>;
+  tfCounts: Record<string, number>;
+}
+
+function mergeTournamentRewards(
+  dataMap: Map<string, AggregatedPlayer>,
+  tournament: Tournament,
+): MergeStats {
+  const stats: MergeStats = { updated: 0, added: 0, rtCounts: {}, tfCounts: {} };
+
+  for (const team of tournament.teams) {
+    const rtKey = RT_PLACEMENT_KEYS[team.placement] ?? "RT4";
+
+    for (const player of team.players) {
+      let record = dataMap.get(player.handle);
+
+      if (record) {
+        record.name = player.name;
+        record.battletag = player.battletag;
+        stats.updated++;
+      } else {
+        record = {
+          name: player.name,
+          handle: player.handle,
+          battletag: player.battletag,
+          placements: zeroPlacements(),
+          rewards: [],
+        };
+        dataMap.set(player.handle, record);
+        stats.added++;
+      }
+
+      record.placements[rtKey]++;
+      stats.rtCounts[rtKey] = (stats.rtCounts[rtKey] ?? 0) + 1;
+
+      for (const code of player.rewards) {
+        if (VALID_TF_CODES.has(code) && !record.rewards.includes(code)) {
+          record.rewards.push(code);
+          stats.tfCounts[code] = (stats.tfCounts[code] ?? 0) + 1;
+        }
+      }
+    }
+  }
+
+  return stats;
+}
+
+function logMergeStats(filename: string, stats: MergeStats): void {
+  console.log(`  ${filename}: ${stats.updated} existing players updated, ${stats.added} new players added`);
+
+  const rtParts = Object.entries(stats.rtCounts)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([key, count]) => `${count}× ${key}`);
+  if (rtParts.length > 0) {
+    console.log(`    RT rewards: ${rtParts.join(", ")}`);
+  }
+
+  const tfParts = Object.entries(stats.tfCounts)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([key, count]) => `${count}× ${key}`);
+  if (tfParts.length > 0) {
+    console.log(`    TF rewards granted: ${tfParts.join(", ")}`);
+  }
+}
+
+async function writePlayerRewards(dataMap: Map<string, AggregatedPlayer>): Promise<void> {
+  const players = [...new Set(dataMap.values())]
+    .map((player) => {
+      const out: Record<string, unknown> = {
+        name: player.name,
+        handle: player.handle,
+      };
+      if (player.battletag) out.battletag = player.battletag;
+      out.placements = player.placements;
+      out.rewards = [...player.rewards].sort();
+      return out;
+    })
+    .sort((a, b) => (a.name as string).localeCompare(b.name as string));
+
+  const output = {
+    generated: new Date().toISOString(),
+    playerCount: players.length,
+    players,
+  };
+
+  await Deno.writeTextFile(
+    join(BUILD_DIR, PLAYER_REWARDS_FILENAME),
+    JSON.stringify(output, null, JSON_INDENT) + "\n",
+  );
+
+  console.log(`  ${PLAYER_REWARDS_FILENAME} (${players.length} players)`);
+}
+
 // ── Processing ────────────────────────────────────────────────────────────
 
 interface ProcessedTournament {
@@ -183,36 +364,40 @@ interface ProcessedTournament {
   outputFile: string;
 }
 
-/** Reads, validates, and writes each tournament YAML as JSON. */
+/** Reads, validates, and writes each tournament YAML as JSON (sorted alphabetically). */
 async function processTournaments(): Promise<ProcessedTournament[]> {
   const results: ProcessedTournament[] = [];
   const warnings: string[] = [];
   let hasErrors = false;
 
+  const filenames: string[] = [];
   for await (const entry of Deno.readDir(TOURNAMENT_DIR)) {
-    if (!entry.isFile || !entry.name.endsWith(INPUT_EXT)) continue;
+    if (entry.isFile && entry.name.endsWith(INPUT_EXT)) filenames.push(entry.name);
+  }
+  filenames.sort();
 
-    const content = await Deno.readTextFile(join(TOURNAMENT_DIR, entry.name));
+  for (const filename of filenames) {
+    const content = await Deno.readTextFile(join(TOURNAMENT_DIR, filename));
 
     let tournament: Tournament;
     try {
-      tournament = validateTournament(parseYaml(content), entry.name);
+      tournament = validateTournament(parseYaml(content), filename);
     } catch (e) {
       console.error(`ERROR: ${(e as Error).message}`);
       hasErrors = true;
       continue;
     }
 
-    warnings.push(...checkConsistency(tournament, entry.name));
+    warnings.push(...checkConsistency(tournament, filename));
 
-    const outputFile = entry.name.replace(INPUT_EXT, OUTPUT_EXT);
+    const outputFile = filename.replace(INPUT_EXT, OUTPUT_EXT);
     await Deno.writeTextFile(
       join(BUILD_DIR, outputFile),
       JSON.stringify(tournament, null, JSON_INDENT) + "\n",
     );
 
     const playerCount = tournament.teams.reduce((sum, team) => sum + team.players.length, 0);
-    console.log(`  ${entry.name} → ${outputFile} (${tournament.teams.length} teams, ${playerCount} players)`);
+    console.log(`  ${filename} → ${outputFile} (${tournament.teams.length} teams, ${playerCount} players)`);
 
     results.push({ tournament, outputFile });
   }
@@ -228,7 +413,10 @@ async function processTournaments(): Promise<ProcessedTournament[]> {
 }
 
 /** Writes the index.json manifest from processed tournament results. */
-async function writeIndex(processed: ProcessedTournament[]): Promise<void> {
+async function writeIndex(
+  processed: ProcessedTournament[],
+  playerRewardsFile: string,
+): Promise<void> {
   const entries: IndexEntry[] = processed
     .map(({ tournament, outputFile }) => ({
       id: tournament.id,
@@ -240,6 +428,7 @@ async function writeIndex(processed: ProcessedTournament[]): Promise<void> {
   const index = {
     generated: new Date().toISOString(),
     tournaments: entries,
+    rewards: playerRewardsFile,
   };
 
   await Deno.writeTextFile(
@@ -251,8 +440,6 @@ async function writeIndex(processed: ProcessedTournament[]): Promise<void> {
 // ── Main ──────────────────────────────────────────────────────────────────
 
 async function main() {
-  console.log("Building tournament rewards...");
-
   try {
     await Deno.remove(BUILD_DIR, { recursive: true });
   } catch (e) {
@@ -260,10 +447,24 @@ async function main() {
   }
   await Deno.mkdir(BUILD_DIR, { recursive: true });
 
-  const processed = await processTournaments();
-  await writeIndex(processed);
+  const dataMap = await loadClassicRewards();
 
-  console.log(`Generated ${processed.length} tournament file(s) into build/tournament/`);
+  console.log("\nBuilding tournament rewards...");
+  const processed = await processTournaments();
+
+  console.log("\nMerging tournament rewards...");
+  for (const { tournament, outputFile } of processed) {
+    const filename = outputFile.replace(OUTPUT_EXT, INPUT_EXT);
+    const stats = mergeTournamentRewards(dataMap, tournament);
+    logMergeStats(filename, stats);
+  }
+
+  console.log("\nWriting player rewards...");
+  await writePlayerRewards(dataMap);
+
+  await writeIndex(processed, PLAYER_REWARDS_FILENAME);
+
+  console.log(`\nGenerated ${processed.length} tournament file(s) + ${PLAYER_REWARDS_FILENAME} into build/tournament/`);
 }
 
 main();
