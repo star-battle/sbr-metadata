@@ -2,7 +2,7 @@
 version: "5.0"
 published: null
 updated: null
-revision: null
+buildId: null
 status: dev
 tags: [new-content, game-balance, bugfixes, ui]
 ---

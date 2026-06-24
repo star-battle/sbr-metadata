@@ -2,7 +2,7 @@
 version: "4.3"
 published: "2021-12-25T00:00Z"
 updated: null
-revision: null
+buildId: null
 status: live
 tags: [new-content, game-balance, ui, bugfixes]
 ---

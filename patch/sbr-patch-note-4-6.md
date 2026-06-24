@@ -2,7 +2,7 @@
 version: "4.6"
 published: "2022-02-06T00:00Z"
 updated: null
-revision: null
+buildId: null
 status: live
 tags: [game-balance, new-content, ui]
 ---

@@ -2,7 +2,7 @@
 version: "3.0"
 published: "2021-10-03T00:00Z"
 updated: null
-revision: null
+buildId: null
 status: live
 tags: [new-content, game-balance, bugfixes]
 ---

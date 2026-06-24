@@ -2,7 +2,7 @@
 version: "4.1"
 published: "2021-11-02T00:00Z"
 updated: null
-revision: null
+buildId: null
 status: live
 tags: [game-balance]
 ---

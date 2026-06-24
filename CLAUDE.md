@@ -16,7 +16,7 @@ Each script is self-contained and validates its input strictly — it exits 1 on
 
 | Script | Input | Output |
 |---|---|---|
-| `generate-patch-notes.ts` | `patch/*.md` | `build/patch/*.html`, `index.html`, `index.json` |
+| `generate-patch-notes.ts` | `patch/*.md`, `patch/assets/` | `build/patch/*.html`, `*.md`, `assets/`, `index.html`, `index.json` |
 | `generate-web-index.ts` | `web/index.md`, `web/external-sites.json` | `build/web/` |
 | `generate-tournament-rewards.ts` | `tournament/items/*.yml`, `tournament/classic/classic-rewards.yml` | `build/tournament/*.json`, `index.json`, `player-rewards.json` |
 
@@ -39,6 +39,6 @@ The build script aggregates classic + SBR rewards into `player-rewards.json`: T1
 ## Conventions
 
 - Patch note files: `sbr-patch-note-X-Y.md` (major-minor, no leading zeros)
-- Asset URLs in patch notes are rewritten at build time to `raw.githubusercontent.com` absolute URLs using the commit SHA
+- Patch note assets (`patch/assets/`) and source `.md` files are copied into `build/patch/` at build time; HTML uses relative `./assets/...` paths, `index.json` uses absolute `https://star-battle.talv.space/patch/...` URLs
 - All three deploy jobs share concurrency group `deploy-star-battle-github-io` to avoid push races on the target repo
 - `generate-tournament-rewards` uses `keep_files: true`; patch notes does not (replaces the whole `/patch/` dir each build)

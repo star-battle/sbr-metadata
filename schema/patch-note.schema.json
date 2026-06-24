@@ -20,10 +20,9 @@
       "format": "date-time",
       "description": "ISO 8601 datetime of the most recent clarification or hotpatch update, null if none"
     },
-    "revision": {
-      "type": ["integer", "null"],
-      "minimum": 1,
-      "description": "Optional build/revision number"
+    "buildId": {
+      "type": ["string", "null"],
+      "description": "Optional build identifier string"
     },
     "status": {
       "type": "string",

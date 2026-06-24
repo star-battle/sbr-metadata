@@ -6,20 +6,16 @@
  *   - Lints heading hierarchy
  *   - Verifies referenced assets exist on disk
  *   - Renders markdown to HTML via @deno/gfm
- *   - Resolves ./assets/... to absolute raw.githubusercontent.com URLs
  *
  * Outputs:
  *   - build/patch/index.json  — metadata index for third-party consumers
  *   - build/patch/*.html      — individual patch note pages
  *   - build/patch/index.html  — listing page
+ *   - build/patch/assets/     — images referenced by patch notes
+ *   - build/patch/*.md        — source markdown files
  *
  * Usage:
- *   deno run --allow-read --allow-write --allow-env --allow-run=git scripts/generate-patch-notes.ts
- *
- * Env vars (all optional — inferred from git when absent):
- *   REPO_OWNER   GitHub org/user  (git remote get-url origin)
- *   REPO_NAME    Repository name  (git remote get-url origin)
- *   COMMIT_SHA   Commit ref       (git rev-parse HEAD)
+ *   deno run --allow-read --allow-write --allow-env scripts/generate-patch-notes.ts
  */
 
 import { parse as parseYaml } from "@std/yaml";
@@ -32,38 +28,22 @@ const PATCH_DIR = join(REPO_ROOT, "patch");
 const BUILD_DIR = join(REPO_ROOT, "build", "patch");
 const LAYOUT_PATH = join(REPO_ROOT, "layout", "default.html");
 
-// ── Git inference ──────────────────────────────────────────────────────────
+const SITE_BASE = "https://star-battle.talv.space/patch";
 
-async function gitOut(args: string[]): Promise<string> {
-  try {
-    const { stdout } = await new Deno.Command("git", {
-      args,
-      stdout: "piped",
-      stderr: "null",
-    }).output();
-    return new TextDecoder().decode(stdout).trim();
-  } catch {
-    return "";
+// ── File copy utility ─────────────────────────────────────────────────────
+
+async function copyDir(src: string, dest: string): Promise<void> {
+  await Deno.mkdir(dest, { recursive: true });
+  for await (const entry of Deno.readDir(src)) {
+    const srcPath = join(src, entry.name);
+    const destPath = join(dest, entry.name);
+    if (entry.isDirectory) {
+      await copyDir(srcPath, destPath);
+    } else {
+      await Deno.copyFile(srcPath, destPath);
+    }
   }
 }
-
-const _gitSha = await gitOut(["rev-parse", "HEAD"]);
-const _gitRemote = await gitOut(["remote", "get-url", "origin"]);
-const _remoteMatch = _gitRemote.match(/[:/]([^/:]+)\/([^/]+?)(?:\.git)?$/);
-
-function mustResolve(name: string, value: string | undefined): string {
-  if (!value) {
-    console.error(`ERROR: ${name} is not set and could not be inferred from git.`);
-    Deno.exit(1);
-  }
-  return value;
-}
-
-const REPO_OWNER = mustResolve("REPO_OWNER", Deno.env.get("REPO_OWNER") ?? _remoteMatch?.[1]);
-const REPO_NAME  = mustResolve("REPO_NAME",  Deno.env.get("REPO_NAME")  ?? _remoteMatch?.[2]);
-const COMMIT_SHA = mustResolve("COMMIT_SHA", Deno.env.get("COMMIT_SHA") ?? (_gitSha || undefined));
-
-const RAW_BASE = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${COMMIT_SHA}`;
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -71,7 +51,7 @@ interface Frontmatter {
   version: string;
   published: string | null;
   updated?: string | null;
-  revision?: number | null;
+  buildId?: string | null;
   status: string;
   tags: string[];
 }
@@ -80,7 +60,7 @@ interface PatchEntry {
   version: string;
   published: string | null;
   updated: string | null;
-  revision: number | null;
+  buildId: string | null;
   status: string;
   tags: string[];
   file: string;
@@ -109,8 +89,8 @@ function validateFrontmatter(fm: unknown, file: string): Frontmatter {
   if (f.updated !== undefined && f.updated !== null && typeof f.updated !== "string") {
     throw new Error(`[${file}] updated must be a string or null`);
   }
-  if (f.revision !== undefined && f.revision !== null && typeof f.revision !== "number") {
-    throw new Error(`[${file}] revision must be an integer or null`);
+  if (f.buildId !== undefined && f.buildId !== null && typeof f.buildId !== "string") {
+    throw new Error(`[${file}] buildId must be a string or null`);
   }
   if (!VALID_STATUSES.has(f.status as string)) {
     throw new Error(`[${file}] invalid status: ${JSON.stringify(f.status)}`);
@@ -128,7 +108,7 @@ function validateFrontmatter(fm: unknown, file: string): Frontmatter {
     version: f.version as string,
     published: (f.published ?? null) as string | null,
     updated: (f.updated ?? null) as string | null,
-    revision: (f.revision ?? null) as number | null,
+    buildId: (f.buildId ?? null) as string | null,
     status: f.status as string,
     tags: f.tags as string[],
   };
@@ -166,7 +146,7 @@ async function extractAssets(
     } catch {
       warnings.push(`[${file}] referenced asset not found on disk: ${rel}`);
     }
-    assets[rel] = `${RAW_BASE}/patch/${rel}`;
+    assets[rel] = `${SITE_BASE}/${rel}`;
   }
   return assets;
 }
@@ -233,10 +213,6 @@ function applyTemplate(template: string, vars: Record<string, string>): string {
   return template.replace(/\{\{(\w+)\}\}/g, (_, key) => vars[key] ?? "");
 }
 
-function rewriteAssetUrls(html: string): string {
-  return html.replace(/\.\/(assets\/[^"'\s)]+)/g, `${RAW_BASE}/patch/$1`);
-}
-
 // ── Version sort key ───────────────────────────────────────────────────────
 
 function versionKey(v: string): number {
@@ -282,7 +258,7 @@ async function main() {
 
     const title = `Star Battle Reloaded ${fm.version} - Patch Notes`;
     const bodyWithoutH1 = body.replace(/^# .+\n/, "");
-    const renderedHtml = rewriteAssetUrls(render(bodyWithoutH1, { allowIframes: false }));
+    const renderedHtml = render(bodyWithoutH1, { allowIframes: false });
 
     const htmlName = entry.name.replace(/\.md$/, ".html");
     await Deno.writeTextFile(
@@ -300,10 +276,10 @@ async function main() {
       version: fm.version,
       published: fm.published,
       updated: fm.updated ?? null,
-      revision: fm.revision ?? null,
+      buildId: fm.buildId ?? null,
       status: fm.status,
       tags: fm.tags,
-      file: `${RAW_BASE}/patch/${entry.name}`,
+      file: `${SITE_BASE}/${entry.name}`,
       assets,
       htmlFile: htmlName,
       title,
@@ -315,6 +291,15 @@ async function main() {
   if (hasErrors) {
     console.error("Aborting due to validation errors.");
     Deno.exit(1);
+  }
+
+  // ── Copy assets and source .md files ────────────────────────────────────
+
+  await copyDir(join(PATCH_DIR, "assets"), join(BUILD_DIR, "assets"));
+
+  for await (const entry of Deno.readDir(PATCH_DIR)) {
+    if (!entry.isFile || !entry.name.match(/^sbr-patch-note-\d+-\d+\.md$/)) continue;
+    await Deno.copyFile(join(PATCH_DIR, entry.name), join(BUILD_DIR, entry.name));
   }
 
   entries.sort((a, b) => versionKey(b.version) - versionKey(a.version));

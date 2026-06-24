@@ -2,7 +2,7 @@
 version: "4.2"
 published: "2021-11-15T00:00Z"
 updated: null
-revision: null
+buildId: null
 status: live
 tags: [game-balance, bugfixes]
 ---
