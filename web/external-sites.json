@@ -1,10 +1,12 @@
 {
-  "/official/website": "https://star-battle.github.io",
+  "/official/website": "https://star-battle.talv.space",
   "/official/github": "https://github.com/star-battle",
   "/official/youtube": "https://www.youtube.com/@starbattlereloaded2219",
   "/official/discord": "https://discord.gg/8pNrrM6JMF",
   "/community/website": "https://starbattle.pro",
   "/community/resources": "https://starbattle.pro/resources",
   "/donate/gamedev": "https://ko-fi.com/starbattlereloaded",
-  "/donate/starbattlepro": "https://ko-fi.com/legacynox"
+  "/donate/starbattlepro": "https://ko-fi.com/legacynox",
+  "/info/patch-notes": "https://starbattle.pro/patch-notes",
+  "/info/sc2arcade-sbr": "https://sc2arcade.com/map/2/235210"
 }
