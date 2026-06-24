@@ -62,7 +62,6 @@ jobs:
           publish_branch: main
           publish_dir: ./build/tournament
           destination_dir: tournament
-          keep_files: true
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: 'chore: update tournament rewards'
